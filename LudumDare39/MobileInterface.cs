@@ -27,6 +27,9 @@ namespace LudumDare39
             // Init UI   - This should draw the phone 'OS' and display a splash screen on the main screen
             background = new Bitmap(Properties.Resources.menu);
             pictureMenu.Image = background;
+
+            osBar = new Bitmap(Properties.Resources.osbar);
+            pictureOSBar.Image = osBar;
         }
 
         private void buttonStart_click(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace LudumDare39
 
 
             // Initialise game state
-            GameState status = new GameState();
+            GameState status = new GameState(); 
 
 
             // Start game
