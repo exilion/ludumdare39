@@ -109,6 +109,7 @@
             this.buttonSettings.TabIndex = 1;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.UseVisualStyleBackColor = false;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // textboxTask
             // 

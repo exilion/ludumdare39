@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LudumDare39
 {
-    class GameState
+    public class GameState
     {
         public enum Brightness { low, medium, high };
         public enum Volume { mute, low, medium, high };

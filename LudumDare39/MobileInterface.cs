@@ -16,7 +16,7 @@ namespace LudumDare39
         GameState status;
         Timer gameTimer;
         float batteryPercentage;
-
+            
         public MobileInterface()
         {
             InitializeComponent();
@@ -26,6 +26,8 @@ namespace LudumDare39
             gameTimer.Tick += new EventHandler(gameTimer_Tick);
 
             pictureBoxBattery.Image = Properties.Resources.battery;
+
+            buttonSettings.Enabled = false;
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -37,12 +39,8 @@ namespace LudumDare39
             {
                 gameTimer.Stop();
                 btnStartGame.Show();
+                buttonSettings.Enabled = false;
             }
-        }
-
-        private void updateTask(object sender, EventArgs e)
-        {
-
         }
 
         private void btnStartGame_MouseClick(object sender, MouseEventArgs e)
@@ -50,6 +48,41 @@ namespace LudumDare39
             status = new GameState();
             gameTimer.Start();
             btnStartGame.Hide();
+            buttonSettings.Enabled = true;
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            Settings settingsWindow = new Settings(status);
+            settingsWindow.ShowDialog();
+            switch (settingsWindow.vol)
+            {
+                case 0:
+                    status.SetVolume(GameState.Volume.mute);
+                    break;
+                case 1:
+                    status.SetVolume(GameState.Volume.low);
+                    break;
+                case 2:
+                    status.SetVolume(GameState.Volume.medium);
+                    break;
+                case 3:
+                    status.SetVolume(GameState.Volume.high);
+                    break;
+            }
+            switch (settingsWindow.bright)
+            {
+                case 0:
+                    status.SetBrightness(GameState.Brightness.low);
+                    break;
+                case 1:
+                    status.SetBrightness(GameState.Brightness.medium);
+                    break;
+                case 2:
+                    status.SetBrightness(GameState.Brightness.high);
+                    break;
+            }
+
         }
 
     }
