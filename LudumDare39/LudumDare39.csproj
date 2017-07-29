@@ -46,6 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Minigame.cs" />
+    <Compile Include="Minigames\MinigameClosePopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Minigames\MinigameClosePopup.Designer.cs">
+      <DependentUpon>MinigameClosePopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Minigames\MinigameContainerClosePopup.cs" />
     <Compile Include="MobileInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +68,9 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Minigames\MinigameClosePopup.resx">
+      <DependentUpon>MinigameClosePopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MobileInterface.resx">
       <DependentUpon>MobileInterface.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,9 +100,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Minigames\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\osbar.png" />
   </ItemGroup>

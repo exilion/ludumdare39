@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LudumDare39.Minigames;
 using System.Resources;
 
 namespace LudumDare39
@@ -15,11 +16,14 @@ namespace LudumDare39
     {
         GameState status;
         Timer gameTimer;
+        List<Minigame> minigames;
+        Minigame currentMinigame;
         float batteryPercentage;
-            
+		
         public MobileInterface()
         {
             InitializeComponent();
+            InitMinigames();
 
             gameTimer = new Timer();
             gameTimer.Interval = (1000);
@@ -28,6 +32,12 @@ namespace LudumDare39
             pictureBoxBattery.Image = Properties.Resources.battery;
 
             buttonSettings.Enabled = false;
+        }
+
+        private void InitMinigames()
+        {
+            minigames = new List<Minigame>();
+            minigames.Add(new MinigameContainerClosePopup());
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)

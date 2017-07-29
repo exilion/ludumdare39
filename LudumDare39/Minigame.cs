@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LudumDare39
 {
-    abstract class Minigame
+    public abstract class Minigame
     {
-        private string instruction;
-        private MobileInterface mobileInterface; 
+        protected string minigameDescription;
+        protected string minigameName;
+        protected UserControl minigameControl;
 
-        public Minigame(MobileInterface mobileInterface)
+        public Minigame(string minigameName, string minigameDescription)
         {
-            this.mobileInterface = mobileInterface;
-        }
-        
-        public string GetInstruction() {
-            return instruction;
+            this.minigameName = minigameName;
+            this.minigameDescription = minigameDescription;
         }
 
-        abstract public void SetupInterface();
+        public UserControl GetMinigameControl()
+        {
+            return minigameControl;
+        }
+
+        public String GetMinigameDescription()
+        {
+            return minigameDescription;
+        }
+
+        public String GetMinigameName()
+        {
+            return minigameName;
+        }
     }
 }
