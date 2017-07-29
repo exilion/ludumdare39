@@ -7,38 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace LudumDare39
 {
     public partial class MobileInterface : Form
     {
-        GameState status;
-        Timer gameTimer;
+
+        Image osBar;
+        Image background;
 
         public MobileInterface()
         {
             InitializeComponent();
-
-            gameTimer = new Timer();
-            gameTimer.Interval = (1000);
-            gameTimer.Tick += new EventHandler(gameTimer_Tick);
         }
 
-        private void gameTimer_Tick(object sender, EventArgs e)
+        private void MobileInterface_Load(object sender, EventArgs e)
         {
-            status.UpdateBattery();
-            if (status.GetBatteryValue() == 0)
-            {
-                gameTimer.Stop();
-                btnStartGame.Show();
-            }
+            // Init UI   - This should draw the phone 'OS' and display a splash screen on the main screen
+            background = new Bitmap(Properties.Resources.menu);
+            pictureMenu.Image = background;
+
+            osBar = new Bitmap(Properties.Resources.osbar);
+            pictureOSBar.Image = osBar;
         }
 
-        private void btnStartGame_MouseClick(object sender, MouseEventArgs e)
+        private void buttonStart_click(object sender, EventArgs e)
         {
-            status = new GameState();
-            gameTimer.Start();
-            btnStartGame.Hide();
+            // Start game!
+            // Hide button
+            buttonStart.Hide();
+
+
+            // Initialise game state
+            GameState status = new GameState(); 
+
+
+            // Start game
+
+
         }
+
+
     }
 }
