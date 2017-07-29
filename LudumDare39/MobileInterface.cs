@@ -14,6 +14,7 @@ namespace LudumDare39
     {
         GameState status;
         Timer gameTimer;
+        float batteryPercentage;
 
         public MobileInterface()
         {
@@ -27,6 +28,8 @@ namespace LudumDare39
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             status.UpdateBattery();
+            batteryPercentage = status.GetBatteryValue()/10;
+            textBoxBattery.Text = batteryPercentage.ToString() + "%";
             if (status.GetBatteryValue() == 0)
             {
                 gameTimer.Stop();
@@ -40,5 +43,6 @@ namespace LudumDare39
             gameTimer.Start();
             btnStartGame.Hide();
         }
+
     }
 }
