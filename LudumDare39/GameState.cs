@@ -54,7 +54,14 @@ namespace LudumDare39
                     break;
             }
             
-            SetBatteryValue(currentBattery - usedBattery);
+            if (currentBattery - usedBattery > 0)
+            {
+                SetBatteryValue(currentBattery - usedBattery);
+            } else
+            {
+                SetBatteryValue(0);
+            }
+
         }
         
         public void SetBrightness(Brightness screenBrightness)
