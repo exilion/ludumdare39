@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LudumDare39.Minigames;
+using System.Resources;
 
 namespace LudumDare39
 {
@@ -17,6 +18,7 @@ namespace LudumDare39
         Timer gameTimer;
         List<Minigame> minigames;
         Minigame currentMinigame;
+        float batteryPercentage;
         
         public MobileInterface()
         {
@@ -26,6 +28,8 @@ namespace LudumDare39
             gameTimer = new Timer();
             gameTimer.Interval = (1000);
             gameTimer.Tick += new EventHandler(gameTimer_Tick);
+
+            pictureBoxBattery.Image = Properties.Resources.battery;
         }
 
         private void InitMinigames()
@@ -37,11 +41,18 @@ namespace LudumDare39
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             status.UpdateBattery();
+            batteryPercentage = status.GetBatteryValue()/10;
+            textBoxBattery.Text = batteryPercentage.ToString() + "%";
             if (status.GetBatteryValue() == 0)
             {
                 gameTimer.Stop();
                 btnStartGame.Show();
             }
+        }
+
+        private void updateTask(object sender, EventArgs e)
+        {
+
         }
 
         private void btnStartGame_MouseClick(object sender, MouseEventArgs e)
@@ -50,5 +61,6 @@ namespace LudumDare39
             gameTimer.Start();
             btnStartGame.Hide();
         }
+
     }
 }
