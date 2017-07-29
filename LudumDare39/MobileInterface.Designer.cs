@@ -1,6 +1,6 @@
 ﻿namespace LudumDare39
 {
-    partial class Form1
+    partial class MobileInterface
     {
         /// <summary>
         /// Required designer variable.
