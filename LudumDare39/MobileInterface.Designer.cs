@@ -33,12 +33,14 @@
             this.minigamePanel = new System.Windows.Forms.Panel();
             this.btnStartGame = new System.Windows.Forms.Button();
             this.osPanel = new System.Windows.Forms.Panel();
+            this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.textBoxBattery = new System.Windows.Forms.TextBox();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.textboxTask = new System.Windows.Forms.TextBox();
             gameTimer = new System.Windows.Forms.Timer(this.components);
             this.minigamePanel.SuspendLayout();
             this.osPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -67,6 +69,7 @@
             // osPanel
             // 
             this.osPanel.BackgroundImage = global::LudumDare39.Properties.Resources.osbar;
+            this.osPanel.Controls.Add(this.pictureBoxBattery);
             this.osPanel.Controls.Add(this.textBoxBattery);
             this.osPanel.Controls.Add(this.buttonSettings);
             this.osPanel.Controls.Add(this.textboxTask);
@@ -75,16 +78,25 @@
             this.osPanel.Size = new System.Drawing.Size(465, 27);
             this.osPanel.TabIndex = 1;
             // 
+            // pictureBoxBattery
+            // 
+            this.pictureBoxBattery.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxBattery.Location = new System.Drawing.Point(353, 4);
+            this.pictureBoxBattery.Name = "pictureBoxBattery";
+            this.pictureBoxBattery.Size = new System.Drawing.Size(22, 20);
+            this.pictureBoxBattery.TabIndex = 3;
+            this.pictureBoxBattery.TabStop = false;
+            // 
             // textBoxBattery
             // 
             this.textBoxBattery.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.textBoxBattery.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxBattery.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBattery.ForeColor = System.Drawing.SystemColors.Info;
-            this.textBoxBattery.Location = new System.Drawing.Point(353, 7);
+            this.textBoxBattery.Location = new System.Drawing.Point(370, 6);
             this.textBoxBattery.Name = "textBoxBattery";
             this.textBoxBattery.ReadOnly = true;
-            this.textBoxBattery.Size = new System.Drawing.Size(46, 13);
+            this.textBoxBattery.Size = new System.Drawing.Size(29, 13);
             this.textBoxBattery.TabIndex = 2;
             this.textBoxBattery.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -123,6 +135,7 @@
             this.minigamePanel.ResumeLayout(false);
             this.osPanel.ResumeLayout(false);
             this.osPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +148,7 @@
         private System.Windows.Forms.TextBox textboxTask;
         private System.Windows.Forms.TextBox textBoxBattery;
         private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.PictureBox pictureBoxBattery;
     }
 }
 

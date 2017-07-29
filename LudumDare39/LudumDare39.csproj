@@ -85,7 +85,10 @@
     <Folder Include="Minigames\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\osbar.png" />
+    <EmbeddedResource Include="Resources\osbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\battery.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

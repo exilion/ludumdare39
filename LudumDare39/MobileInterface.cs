@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace LudumDare39
 {
@@ -23,6 +24,8 @@ namespace LudumDare39
             gameTimer = new Timer();
             gameTimer.Interval = (1000);
             gameTimer.Tick += new EventHandler(gameTimer_Tick);
+
+            pictureBoxBattery.Image = Properties.Resources.battery;
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -35,6 +38,11 @@ namespace LudumDare39
                 gameTimer.Stop();
                 btnStartGame.Show();
             }
+        }
+
+        private void updateTask(object sender, EventArgs e)
+        {
+
         }
 
         private void btnStartGame_MouseClick(object sender, MouseEventArgs e)
