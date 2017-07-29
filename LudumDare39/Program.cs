@@ -14,8 +14,6 @@ namespace LudumDare39
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MobileInterface());
-
-            GameState status = new GameState();
         }
     }
 }
