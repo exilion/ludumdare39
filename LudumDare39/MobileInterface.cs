@@ -12,9 +12,33 @@ namespace LudumDare39
 {
     public partial class MobileInterface : Form
     {
+        GameState status;
+        Timer gameTimer;
+
         public MobileInterface()
         {
             InitializeComponent();
+
+            gameTimer = new Timer();
+            gameTimer.Interval = (1000);
+            gameTimer.Tick += new EventHandler(gameTimer_Tick);
+        }
+
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            status.UpdateBattery();
+            if (status.GetBatteryValue() == 0)
+            {
+                gameTimer.Stop();
+                btnStartGame.Show();
+            }
+        }
+
+        private void btnStartGame_MouseClick(object sender, MouseEventArgs e)
+        {
+            status = new GameState();
+            gameTimer.Start();
+            btnStartGame.Hide();
         }
     }
 }

@@ -6,16 +6,14 @@ using System.Windows.Forms;
 
 namespace LudumDare39
 {
-    static class GameController
+    static class Program
     {
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MobileInterface());
-
-            GameState status = new GameState();
+            Application.Run(new MobileInterface());            
         }
     }
 }

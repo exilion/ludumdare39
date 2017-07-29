@@ -11,31 +11,55 @@ namespace LudumDare39
         public enum Brightness { low, medium, high };
         public enum Volume { mute, low, medium, high };
 
-        private bool wifiOn;
-        private bool bluetoothOn;
         private Volume soundVolume;
         private Brightness screenBrightness;
         private long batteryValue;
         
-        private Minigame currentMinigame;
-
         public GameState()
         {
-            wifiOn = false;
-            bluetoothOn = false;
             soundVolume = Volume.medium;
             screenBrightness = Brightness.medium;
-            batteryValue = 100;
+            batteryValue = 1000;
         }
-
-        public Minigame GetMinigame()
+        
+        public void UpdateBattery()
         {
-            return currentMinigame;
+            long currentBattery = GetBatteryValue();
+            long usedBattery = 0;
+
+            switch (soundVolume)
+            {
+                case Volume.mute:
+                    break;
+                case Volume.low:
+                    usedBattery += 5;
+                    break;
+                case Volume.medium:
+                    usedBattery += 10;
+                    break;
+                case Volume.high:
+                    usedBattery += 15;
+                    break;
+            }
+            switch (screenBrightness)
+            {
+                case Brightness.low:
+                    usedBattery += 10;
+                    break;
+                case Brightness.medium:
+                    usedBattery += 15;
+                    break;
+                case Brightness.high:
+                    usedBattery += 20;
+                    break;
+            }
+            
+            SetBatteryValue(currentBattery - usedBattery);
         }
-
-        public void SetMinigame(Minigame newMinigame)
+        
+        public void SetBrightness(Brightness screenBrightness)
         {
-            this.currentMinigame = newMinigame;
+            this.screenBrightness = screenBrightness;
         }
 
         public Brightness GetBrightness()
@@ -43,19 +67,14 @@ namespace LudumDare39
             return screenBrightness;
         }
 
-        public Volume GetVolume()
-        {
-            return soundVolume;
-        }
-
-        public void SetBrightness(Brightness screenBrightness)
-        {
-            this.screenBrightness = screenBrightness;
-        }
-
         public void SetVolume(Volume soundVolume)
         {
             this.soundVolume = soundVolume;
+        }
+
+        public Volume GetVolume()
+        {
+            return soundVolume;
         }
 
         public long GetBatteryValue()
@@ -66,26 +85,6 @@ namespace LudumDare39
         public void SetBatteryValue(long batteryValue)
         {
             this.batteryValue = batteryValue;
-        }
-
-        public bool WifiOn()
-        {
-            return wifiOn;
-        }
-
-        public void ToggleWifi()
-        {
-            wifiOn = !wifiOn;
-        }
-        
-        public bool BluetoothOn()
-        {
-            return bluetoothOn;
-        }
-
-        public void ToggleBluetooth()
-        {
-            bluetoothOn = !bluetoothOn;
         }
     }
 }
